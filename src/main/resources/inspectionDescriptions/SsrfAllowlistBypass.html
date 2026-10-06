@@ -1,0 +1,11 @@
+<html>
+<body>
+Reports an outbound HTTP call (<code>new URL(...)</code>, <code>RestTemplate.getForObject</code>,
+<code>postForObject</code>, <code>exchange</code>, <code>getForEntity</code>) on an endpoint parameter that was validated only
+with <code>.startsWith(...)</code> or <code>.contains(...)</code> on the raw URL string.
+<!-- tooltip end -->
+<p>String checks on a URL can be bypassed: a value such as <code>https://evil.com[@127.0.0.1</code> passes a prefix or
+substring test while a URL parser resolves a different host (CWE-918; compare CVE-2024-22243 in Spring Framework).
+Parse the URL first and validate its scheme and host against an allowlist.</p>
+</body>
+</html>
